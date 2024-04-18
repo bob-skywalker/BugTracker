@@ -1,9 +1,14 @@
-import { link } from "fs";
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 import { SiWorkplace } from "react-icons/si";
+import classNames from "classnames";
 
 const NavBar = () => {
+  const currentPath = usePathname();
+  //creates a JSON to hold all the attributes
   const links = [
     { label: "Dashboard", href: "/" },
     { label: "Issues", href: "/issues" },
@@ -19,7 +24,11 @@ const NavBar = () => {
           <Link
             key={link.href}
             href={link.href}
-            className="text-black-800 hover:text-green-400 transition-colors"
+            className={classNames({
+              "text-green-600": link.href == currentPath,
+              "text-black-800": link.href != currentPath,
+              "hover:text-green-500 transition-colors": true,
+            })}
           >
             {link.label}
           </Link>
