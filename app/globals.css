@@ -16,3 +16,6 @@ body {
   padding: 1rem;
 }
 
+.radix-themes {
+  --default-font-family: var(--font-inter);
+}
